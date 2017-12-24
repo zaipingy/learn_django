@@ -13,16 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from myapp import views as myapp_view
 
 urlpatterns = [
-    path(r'', myapp_view.index),
+    url(r'^$', myapp_view.index),
     path('admin/', admin.site.urls),
-    path('index/', myapp_view.index),
-    path('login_action/', myapp_view.login_action),
-    path('event_manage/', myapp_view.event_manage),
-    path(r'accounts/login/$', myapp_view.index),
+    url(r'^index/$', myapp_view.index),
+    url(r'^login_action/$', myapp_view.login_action),
+    url(r'^event_manage/$', myapp_view.event_manage),
+    url(r'^accounts/login/$', myapp_view.index),
+    url(r'^search_name/$', myapp_view.search_name),
+    url(r'^guest_manage/$', myapp_view.guest_manage),
+    url(r'^search_realname/$', myapp_view.search_realname),
+    url(r'^sign_index/(?P<eid>[0-9]+)/$', myapp_view.sign_index),
+    url(r'^sign_index_action/(?P<eid>[0-9]+)/$', myapp_view.sign_index_action),
+    url(r'^logout/$', myapp_view.logout),
+    url(r'^api/', include('sign.urls', namespace='sign')),
 ]
