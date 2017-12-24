@@ -18,19 +18,23 @@ from django.contrib import admin
 from django.urls import path, include
 
 from myapp import views as myapp_view
+from blog import views as blog_view
 
 urlpatterns = [
-    url(r'^$', myapp_view.index),
+    url(r'^$', blog_view.hello),
+    url(r'^index/$', blog_view.hello),
+    url(r'^blog_list/$', blog_view.blog_list),
+    # url(r'^$', myapp_view.index),
     path('admin/', admin.site.urls),
-    url(r'^index/$', myapp_view.index),
-    url(r'^login_action/$', myapp_view.login_action),
-    url(r'^event_manage/$', myapp_view.event_manage),
-    url(r'^accounts/login/$', myapp_view.index),
-    url(r'^search_name/$', myapp_view.search_name),
-    url(r'^guest_manage/$', myapp_view.guest_manage),
-    url(r'^search_realname/$', myapp_view.search_realname),
-    url(r'^sign_index/(?P<eid>[0-9]+)/$', myapp_view.sign_index),
-    url(r'^sign_index_action/(?P<eid>[0-9]+)/$', myapp_view.sign_index_action),
-    url(r'^logout/$', myapp_view.logout),
-    url(r'^api/', include('sign.urls', namespace='sign')),
+    # url(r'^index/$', myapp_view.index),
+    # url(r'^login_action/$', myapp_view.login_action),
+    # url(r'^event_manage/$', myapp_view.event_ manage),
+    # url(r'^accounts/login/$', myapp_view.index),
+    # url(r'^search_name/$', myapp_view.search_name),
+    # url(r'^guest_manage/$', myapp_view.guest_manage),
+    # url(r'^search_realname/$', myapp_view.search_realname),
+    # url(r'^sign_index/(?P<eid>[0-9]+)/$', myapp_view.sign_index),
+    # url(r'^sign_index_action/(?P<eid>[0-9]+)/$', myapp_view.sign_index_action),
+    # url(r'^logout/$', myapp_view.logout),
+    # url(r'^api/', include('sign.urls', namespace='sign')),
 ]
